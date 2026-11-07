@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Razzak Hossen — Frontend Web Designer portfolio. HTML, CSS and responsive website design.">
+  <title>Razzak Hossen | Frontend Web Designer</title>
+  <style>
+    :root {
+      --bg: #071329;
+      --panel: #10213d;
+      --text: #f5f8ff;
+      --muted: #b2c1dc;
+      --blue: #4f8cff;
+      --blue-light: #91baff;
+      --line: rgba(255,255,255,.13);
+      --max: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text);
+      background: radial-gradient(ellipse at 85% 5%, #183c78 0, transparent 34%), var(--bg);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 36px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px); background: rgba(7,19,41,.86); border-bottom: 1px solid var(--line); }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 850; letter-spacing: -.04em; font-size: 1.12rem; }
+    .brand span { color: var(--blue-light); }
+    .navlinks { display: flex; gap: 22px; color: var(--muted); font-size: .92rem; }
+    .navlinks a:hover { color: white; }
+    .hero { display: grid; grid-template-columns: 1.3fr .7fr; align-items: center; gap: 48px; padding: 92px 0 82px; }
+    .eyebrow { color: var(--blue-light); font-weight: 750; letter-spacing: .13em; text-transform: uppercase; font-size: .78rem; }
+    h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.06; letter-spacing: -.055em; margin: 14px 0 22px; }
+    h1 em { font-style: normal; color: var(--blue-light); }
+    .lead { max-width: 640px; color: var(--muted); font-size: 1.08rem; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 19px; border-radius: 12px; font-weight: 750; border: 1px solid var(--line); transition: transform .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .primary { background: var(--blue); color: white; border-color: transparent; }
+    .portrait { width: min(100%, 330px); aspect-ratio: 1; margin: auto; border-radius: 30px; border: 1px solid var(--line); background: linear-gradient(145deg, #1b4384, #10203b); display: grid; place-items: center; position: relative; overflow: hidden; }
+    .portrait:before { content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%; background: var(--blue); filter: blur(60px); opacity: .45; }
+    .monogram { position: relative; font-size: 5rem; font-weight: 900; letter-spacing: -.08em; }
+    section { padding: 72px 0; border-top: 1px solid var(--line); }
+    .section-head { margin-bottom: 28px; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.15; letter-spacing: -.04em; margin: 8px 0; }
+    .sub { color: var(--muted); max-width: 680px; margin: 0; }
+    .grid { display: grid; gap: 18px; }
+    .skills { grid-template-columns: repeat(4, 1fr); }
+    .card { background: rgba(16,33,61,.82); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+    .card h3 { margin: 0 0 8px; font-size: 1.08rem; }
+    .card p { color: var(--muted); margin: 0; font-size: .95rem; }
+    .skill-icon { font-size: 1.55rem; margin-bottom: 10px; }
+    .projects { grid-template-columns: repeat(3, 1fr); }
+    .project-art { height: 150px; border-radius: 12px; margin-bottom: 18px; background: linear-gradient(135deg, #2754a1, #172b4b); display: grid; place-items: center; color: #e4edff; font-weight: 850; letter-spacing: .04em; text-align: center; padding: 10px; }
+    .project-art.alt { background: linear-gradient(135deg, #1b5d8c, #172b4b); }
+    .project-art.third { background: linear-gradient(135deg, #384f9b, #202b48); }
+    .tag { display: inline-block; font-size: .75rem; color: var(--blue-light); background: rgba(79,140,255,.12); border: 1px solid rgba(145,186,255,.24); border-radius: 99px; padding: 4px 9px; margin: 12px 5px 0 0; }
+    .about { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px; align-items: start; }
+    .about-box { border-left: 2px solid var(--blue); padding-left: 20px; color: var(--muted); }
+    .contact { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    footer { padding: 25px 0; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+    @media (max-width: 760px) {
+      .navlinks { gap: 12px; font-size: .82rem; }
+      .hero { grid-template-columns: 1fr; padding: 65px 0; gap: 38px; }
+      .portrait { width: 230px; }
+      .skills { grid-template-columns: repeat(2, 1fr); }
+      .projects { grid-template-columns: 1fr; }
+      .about { grid-template-columns: 1fr; gap: 20px; }
+    }
+    @media (max-width: 420px) { .navlinks a:nth-child(2) { display: none; } .skills { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="brand" href="#home">Razzak<span>Portfolio.</span></a>
+      <div class="navlinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow">Frontend Web Designer</div>
+        <h1>Hello, I'm<br><em>Razzak Hossen.</em></h1>
+        <p class="lead">I create clean, modern, and responsive websites using HTML and CSS. I enjoy turning ideas into simple, attractive web experiences that work beautifully on mobile, tablet, and desktop.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">View My Work ↗</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <div class="portrait" aria-label="Razzak Hossen initials">
+        <div class="monogram">RH</div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap about">
+        <div class="section-head">
+          <div class="eyebrow">A little about me</div>
+          <h2>Designing websites<br>with purpose.</h2>
+        </div>
+        <div class="about-box">
+          <p>I'm a frontend web designer focused on building responsive layouts and user-friendly pages. I pay attention to spacing, typography, and details so each website feels polished and easy to use.</p>
+          <p>I'm open to collaborating on landing pages, personal websites, and small business websites. Let's build something useful together.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What I work with</div>
+          <h2>My Skills</h2>
+          <p class="sub">Core tools I use to create responsive web experiences.</p>
+        </div>
+        <div class="grid skills">
+          <article class="card"><div class="skill-icon">⌘</div><h3>HTML5</h3><p>Semantic structure and accessible page content.</p></article>
+          <article class="card"><div class="skill-icon">✦</div><h3>CSS3</h3><p>Layouts, styling, spacing, and visual details.</p></article>
+          <article class="card"><div class="skill-icon">▣</div><h3>Responsive Design</h3><p>Layouts that adapt to phones, tablets, and desktops.</p></article>
+          <article class="card"><div class="skill-icon">◈</div><h3>Web UI</h3><p>Clean sections, readable content, and simple navigation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Selected work</div>
+          <h2>Practice Projects</h2>
+          <p class="sub">These are portfolio practice concepts. Replace them with your own completed projects and screenshots before presenting them as client work.</p>
+        </div>
+        <div class="grid projects">
+          <article class="card">
+            <div class="project-art">BUSINESS WEBSITE</div>
+            <h3>Small Business Website</h3>
+            <p>A simple, professional homepage for a local business with services and contact details.</p>
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Responsive</span>
+          </article>
+          <article class="card">
+            <div class="project-art alt">LANDING PAGE</div>
+            <h3>Product Landing Page</h3>
+            <p>A clear landing page layout designed to introduce a product and guide visitors.</p>
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">UI</span>
+          </article>
+          <article class="card">
+            <div class="project-art third">PERSONAL PORTFOLIO</div>
+            <h3>Personal Portfolio</h3>
+            <p>A responsive portfolio concept that presents skills, sample work, and contact information.</p>
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Mobile-first</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact">
+        <div>
+          <div class="eyebrow">Have a project in mind?</div>
+          <h2>Let's work together.</h2>
+          <p class="sub">Send me a message about your website or landing page project.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="mailto:razzak.cse.brur@gmail.com">Email Me ↗</a>
+          <a class="btn" href="https://www.upwork.com/" target="_blank" rel="noopener">Upwork Profile</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> Razzak Hossen. Designed with HTML & CSS.</div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
